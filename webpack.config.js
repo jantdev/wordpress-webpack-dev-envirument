@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 var path = require("path");
 
 // change these variables to fit your project
@@ -30,6 +31,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
+      {
         test: /\.s?[c]ss$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
@@ -51,5 +62,8 @@ module.exports = {
         use: "url-loader?limit=1024",
       },
     ],
+  },
+  optimization: {
+    minimizer: [new UglifyJsPlugin()],
   },
 };

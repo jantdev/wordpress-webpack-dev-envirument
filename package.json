@@ -7,8 +7,8 @@
     "dev": "webpack --mode development --watch"
   },
   "keywords": [],
-  "mode":"development",
-  "devtool":"source-map",
+  "mode": "development",
+  "devtool": "source-map",
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -27,6 +27,7 @@
     "mini-css-extract-plugin": "^2.0.0",
     "node-sass": "^6.0.1",
     "sass-loader": "^12.1.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "^4.1.0",
     "webpack": "^5.41.1",
     "webpack-cli": "^4.7.2"
