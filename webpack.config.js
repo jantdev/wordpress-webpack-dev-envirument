@@ -5,10 +5,10 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 var path = require("path");
 
 // change these variables to fit your project
-const jsPath = "./js";
-const cssPath = "./css";
-const devpath = path.resolve(__dirname, "../dist");
-const phppath = path.resolve(__dirname, "../");
+const jsPath = "js/mythemejs.js";
+const cssPath = "css/mythemecss.css";
+const devPath = path.resolve(__dirname, "../assets");
+const phpPath = path.resolve(__dirname, "../");
 const localDomain = "http://newjantdev.test";
 
 module.exports = {
@@ -16,19 +16,20 @@ module.exports = {
     app: ["./src/js/app.js", "./src/sass/app.scss"],
   },
   output: {
-    path: devpath,
-    filename: "js/[name].js",
+    path: devPath,
+    filename: jsPath,
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/[name].css",
+      filename: cssPath,
     }),
 
     new BrowserSyncPlugin({
       proxy: localDomain,
-      files: [phppath + "/*.php"],
+      files: [phpPath + "/**/*.php"],
     }),
   ],
+  mode: "development",
   module: {
     rules: [
       {
